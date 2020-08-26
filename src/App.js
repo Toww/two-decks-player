@@ -10,7 +10,7 @@ function App() {
       <Layout>
         <Row>
           <Deck />
-          <Deck />
+          <Deck rightSide={true}/>
         </Row>
       </Layout>
     </div>

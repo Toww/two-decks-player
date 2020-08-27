@@ -1,45 +1,50 @@
+//  ----- Sass Variables -----
+
+$dark-gray-1: #222222;
+$dark-gray-2: #1b1b1b;
+$dark-gray-3: #0e0e0e;
+$light-gray: #313131;
+
 // =====Custom Bootstrap settings =====
 
 $theme-colors: (
   "black": #000000,
-  "dark": #222222,
+  "light-gray": $light-gray,
+  "dark": $dark-gray-1,
+  "dark-2": $dark-gray-2,
+  "dark-3": $dark-gray-3,
 );
 
+$table-dark-bg: $dark-gray-2;
+
+
+$h1-font-size: 1.2rem;
+$h2-font-size: 0.9rem;
 
 // ===== Importing Bootstrap default files =====
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
-
 // ===== Custom non-Bootstrap CSS =====
-
-//  ----- Sass Variables -----
-
-$dark: #222222;
-
 
 //  ----- GLOBAL STYLING -----
 
 body {
   color: white;
-  background-color: $dark;
+  background-color: $dark-gray-1;
 }
 
-h1 {
-  margin: 0;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-h2 {
-  margin: 0;
-  font-size: 0.9rem;
+input {
+  border: none;
+  border-bottom: 1px solid white;
+  background-color: transparent;
+  color: white;
 }
 
 // ----- DECKS STYLING -----
 
 .deck {
-  background-color: #313131;
+  background-color: $light-gray;
 }
 
 // Making a responsive circle by giving it a top & bottom padding
@@ -99,17 +104,20 @@ h2 {
 
 .rel-container > .deck-disc-center {
   z-index: 20;
-  margin-top:6px;
+  margin-top: 6px;
   width: 14px;
   height: 14px;
   border-radius: 50%;
   background: $dark;
 }
 
-
 // ----- ANIMATIONS -----
 
 @keyframes marker-rotation {
-  from {transform: rotate(90deg)}
-  to {transform: rotate(450deg)}
+  from {
+    transform: rotate(90deg);
+  }
+  to {
+    transform: rotate(450deg);
+  }
 }

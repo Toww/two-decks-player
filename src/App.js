@@ -1,17 +1,22 @@
 import React from "react";
-import './styles.scss'
-import { Container, Col, Row } from "react-bootstrap";
+import "./styles.scss";
+import { Row } from "react-bootstrap";
+import Layout from "./components/Layout";
+import Deck from "./components/Deck";
+import SongList from "./components/SongList";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   return (
     <div className="App">
-      <Container>
-        <Col>
-          <Row className="bg-dark text-primary p-3">
-            Bootstrap is installed !
-          </Row>
-        </Col>
-      </Container>
+      <Layout>
+        <Row>
+          <Deck />
+          <Deck rightSide={true}/>
+        </Row>
+        <SearchBar />
+        <SongList />
+      </Layout>
     </div>
   );
 }

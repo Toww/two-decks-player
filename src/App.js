@@ -1,24 +1,23 @@
 import React from "react";
 import "./styles.scss";
-import { Row } from "react-bootstrap";
 import Layout from "./components/Layout";
-import Deck from "./components/Deck";
+import Decks from "./components/Decks";
 import SongList from "./components/SongList";
 import SearchBar from "./components/SearchBar";
 import SongsContextProvider from "./contexts/SongsContext";
+import DecksContextProvider from "./contexts/DecksContext";
 
 function App() {
   return (
     <div className="App">
       <Layout>
-        <Row>
-          <Deck />
-          <Deck rightSide={true} />
-        </Row>
-        <SongsContextProvider>
-          <SearchBar />
-          <SongList />
-        </SongsContextProvider>
+        <DecksContextProvider>
+         <Decks />
+          <SongsContextProvider>
+            <SearchBar />
+            <SongList />
+          </SongsContextProvider>
+        </DecksContextProvider>
       </Layout>
     </div>
   );

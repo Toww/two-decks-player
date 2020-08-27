@@ -18,20 +18,28 @@ const SongsContextProvider = ({ children }) => {
 
   const filterSongs = (searchValue) => {
     // On call to filterSongs function, we update the filteredSongs state
-    setFilteredSongs(baseSongs.filter((song) => {
-      // if song title or artist name contains the search value, they return true and song
-      // is included in filtered array, else it returns false and is not included.
-      return (
-        song.title.toLowerCase().includes(searchValue) ||
-        song.artist.toLowerCase().includes(searchValue)
-      );
-    }));
+    setFilteredSongs(
+      baseSongs.filter((song) => {
+        // if song title or artist name contains the search value, they return true and song
+        // is included in filtered array, else it returns false and is not included.
+        return (
+          song.title.toLowerCase().includes(searchValue) ||
+          song.artist.toLowerCase().includes(searchValue)
+        );
+      })
+    );
+  };
+
+  const getSongById = (songId) => {
+    return baseSongs.find((song) => {
+      return song.id === songId;
+    });
   };
 
   return (
     // filterSongs function will be used in the SearchBar
     // and the filteredSongs array in the SongList so we provide them
-    <SongsContext.Provider value={{filterSongs, filteredSongs }}>
+    <SongsContext.Provider value={{ filterSongs, filteredSongs, getSongById }}>
       {children}
     </SongsContext.Provider>
   );

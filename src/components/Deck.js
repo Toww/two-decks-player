@@ -3,36 +3,28 @@ import { Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlayCircle } from "@fortawesome/free-solid-svg-icons";
 
-const Deck = ({ rightSide }) => {
-  // Defining deck details and orientation depending on its side
-  const deckDetails =
-    rightSide === true
-      ? {
-          name: "B",
-          flexDirection: "flex-row-reverse",
-          textAlign: "text-right",
-        }
-      : {
-          name: "A",
-          flexDirection: "flex-row",
-          textAlign: "text-left",
-        };
+const Deck = ({ deckObj }) => {
+  console.log(deckObj);
+
+  // Set default song information if there is no loaded song
+  const defaultInfo = { title: "Song title", artist: "Artist" };
+  const songInfo = deckObj.loadedSong ? deckObj.loadedSong : defaultInfo;
 
   return (
     <Col className="">
       <div className="deck p-3">
-        <Row className={deckDetails.flexDirection}>
+        <Row className={deckObj.layout.flexDirection}>
           {/* Info and controls */}
           <Col md={8}>
             <div
-              className={`h-100 d-flex flex-column justify-content-between ${deckDetails.textAlign}`}
+              className={`h-100 d-flex flex-column justify-content-between ${deckObj.layout.textAlign}`}
             >
               {/* Song info */}
               <div
-                className={`bg-dark-3 p-2 d-flex flex-column justify-content-center ${deckDetails.textAlign}`}
+                className={`bg-dark-3 p-2 d-flex flex-column justify-content-center ${deckObj.layout.textAlign}`}
               >
-                <h1 className="m-0 font-weight-bold">Song title</h1>
-                <h2 className="m-0">Artist</h2>
+                <h1 className="m-0 font-weight-bold">{songInfo.title}</h1>
+                <h2 className="m-0">{songInfo.artist}</h2>
               </div>
               {/* Play / pause */}
               <div className="m-0">
@@ -44,7 +36,7 @@ const Deck = ({ rightSide }) => {
               </div>
               {/* Deck name */}
               <div className="m-0 align-bottom font-weight-bold">
-                {deckDetails.name}
+                {deckObj.layout.name}
               </div>
             </div>
           </Col>

@@ -5,6 +5,7 @@ import Layout from "./components/Layout";
 import Deck from "./components/Deck";
 import SongList from "./components/SongList";
 import SearchBar from "./components/SearchBar";
+import SongsContextProvider from "./contexts/SongsContext";
 
 function App() {
   return (
@@ -12,10 +13,12 @@ function App() {
       <Layout>
         <Row>
           <Deck />
-          <Deck rightSide={true}/>
+          <Deck rightSide={true} />
         </Row>
-        <SearchBar />
-        <SongList />
+        <SongsContextProvider>
+          <SearchBar />
+          <SongList />
+        </SongsContextProvider>
       </Layout>
     </div>
   );

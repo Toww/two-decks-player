@@ -62,7 +62,7 @@ input {
   background: white;
 }
 
-// We need a container for the marker as we can't use the main circle's padding.
+// We need a container for the marker as we can't use deck-disc's padding.
 // For better positioning, we need the marker to be absolute, and therefore have
 // its container positioned as relative. For this reason, we create an absolute container,
 // and another relative container in it.

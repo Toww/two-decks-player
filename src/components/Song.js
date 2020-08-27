@@ -1,8 +1,8 @@
 import React from "react";
 
-const Song = ({ title, artist }) => {
+const Song = ({ title, artist, handleContextMenu }) => {
   return (
-    <tr>
+    <tr onClick={handleContextMenu} className="user-select-none">
       <td>{title}</td>
       <td>{artist}</td>
     </tr>

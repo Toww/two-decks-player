@@ -28,7 +28,7 @@ const SearchBar = () => {
   };
 
   return (
-    <form className="d-flex justify-content-center align-items-center mt-4 mb-3">
+    <form onSubmit={(e) => e.preventDefault()} className="d-flex justify-content-center align-items-center mt-4 mb-3">
       <label
         htmlFor="song-search"
         className="m-0 p-0 d-flex align-items-center"

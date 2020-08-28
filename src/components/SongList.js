@@ -5,25 +5,24 @@ import { SongsContext } from "../contexts/SongsContext";
 import { DecksContext } from "../contexts/DecksContext";
 
 const SongList = () => {
-  // We get states and functions for the songs and decks via Context.
-  const { filteredSongs, getSongById } = useContext(SongsContext);
-  const { deckAState, deckBState, setDeckAState, setDeckBState } = useContext(
-    DecksContext
-  );
 
-  // Setting a state to handle context-menu behavior when opened and closed
+  // Get states and functions for the songs and decks via Context.
+  const { filteredSongs, getSongById } = useContext(SongsContext);
+  const { loadDeck } = useContext(DecksContext);
+
+  // State to handle context-menu behavior when opened and closed
   const [contextMenuState, setContextMenuState] = useState({
     isVisible: false,
     hasJustBeenClosed: false,
   });
 
-  // Setting a state to prepare a song to be loaded on click in the song list
+  // State to prepare the song that will be loaded in a deck
   const [songToLoad, setSongToLoad] = useState(null);
 
-  // Creating a ref for the context menu (used to load track on deck A or B)
+  // Ref for the context menu (menu to load track on deck A or B)
   const contextMenu = useRef();
 
-  // Functions to open or close the contextMenu
+  // Opens or close the contextMenu
   const showContextMenu = (clickEvent) => {
     contextMenu.current.classList.remove("d-none");
     contextMenu.current.classList.add("d-block");
@@ -32,29 +31,29 @@ const SongList = () => {
     setContextMenuState({ ...contextMenuState, isVisible: true });
   };
 
-  // When hiding the menu, we check if we can directly click on another
-  // song and re-open context-menu or not (useful when clicked outside to close)
-  const hideContextMenu = (shouldPreventOtherClick) => {
+  // Hides the menu, check if we can directly click on another song
+  // and re-open context-menu or not (useful when clicked outside menu to close it)
+  const hideContextMenu = (shouldPreventNextClick) => {
     contextMenu.current.classList.remove("d-block");
     contextMenu.current.classList.add("d-none");
     setContextMenuState({
       isVisible: false,
-      hasJustBeenClosed: shouldPreventOtherClick,
+      hasJustBeenClosed: shouldPreventNextClick,
     });
   };
 
-  // When contextMenuState changes, we add or remove an
-  // event listener to trigger handleOutsideClick if the
-  // context menu is visible.
+  // When contextMenuState changes, adds or remove an
+  // event listener to trigger to close context menu if 
+  // visible and click happens outside of it
   useEffect(() => {
-    // Check if the user clicks outside of
-    // the context menu to close it if he does
+    // Checks if user clicks outside of context menu,
+    // close it if he does
     const handleOutsideClick = (e) => {
       if (!contextMenu.current.contains(e.target)) {
         hideContextMenu(true);
       }
     };
-
+    // Adds click event listener
     if (contextMenuState.isVisible === true) {
       document.addEventListener("mousedown", handleOutsideClick);
     }
@@ -64,9 +63,9 @@ const SongList = () => {
     };
   }, [contextMenuState]);
 
-  // On click on a song, the contextMenu appears next
-  // to the mouse cursor and state is updated if it wasn't visible,
-  // else it turns hasJustBeenClosed to false, so that next click on
+  // On click on a song, context menu appears next
+  // to mouse cursor if not visible and hasJustBeenClosed is false.
+  // Else it turns hasJustBeenClosed to false so that next click on
   // a song will open the context menu.
   const handleSongClick = (e, songId) => {
     if (
@@ -81,16 +80,12 @@ const SongList = () => {
     }
   };
 
+  // Loads track to corresponding deck and closes context menu.
   const handleDeckLoad = (deckName) => {
-    if (deckName === "A") {
-      setDeckAState({ ...deckAState, loadedSong: songToLoad });
-      hideContextMenu(false);
-    } else if (deckName === "B") {
-      setDeckBState({ ...deckBState, loadedSong: songToLoad });
-      hideContextMenu(false);
-    }
-    console.log("A", deckAState);
-    console.log("B", deckBState);
+    loadDeck(deckName, songToLoad);
+      // Hides the context menu and sets hasJustBeenClosed to false,
+      // so that you can directly click another song and open menu.
+    hideContextMenu(false);
   };
 
   return (
@@ -101,10 +96,10 @@ const SongList = () => {
         className="d-none shadow-lg position-absolute rounded context-menu"
         ref={contextMenu}
       >
-        <ListGroup.Item onClick={() => handleDeckLoad("A")} action>
+        <ListGroup.Item onClick={() => handleDeckLoad("A", songToLoad)} action>
           Play in Deck A
         </ListGroup.Item>
-        <ListGroup.Item onClick={() => handleDeckLoad("B")} action>
+        <ListGroup.Item onClick={() => handleDeckLoad("B", songToLoad)} action>
           Play in Deck B
         </ListGroup.Item>
       </ListGroup>

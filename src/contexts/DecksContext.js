@@ -3,7 +3,7 @@ import React, { useState, createContext } from "react";
 export const DecksContext = createContext();
 
 const DecksContextProvider = ({ children }) => {
-  // We prepare the state for both Decks
+  // Preparing the state for both Decks
   const [deckAState, setDeckAState] = useState({
     isPlaying: false,
     loadedSong: null,
@@ -24,11 +24,26 @@ const DecksContextProvider = ({ children }) => {
     },
   });
 
+  // Loads a song in a specific deck, play the track and stop the other deck
+  const loadDeck = (deckName, songToLoad) => {
+    if (deckName === "A") {
+      setDeckAState({ ...deckAState, loadedSong: songToLoad, isPlaying: true });
+      setDeckBState({ ...deckBState, isPlaying: false });
+    } else if (deckName === "B") {
+      setDeckBState({ ...deckBState, loadedSong: songToLoad, isPlaying: true });
+      setDeckAState({ ...deckAState, isPlaying: false });
+    }
+  };
+
   return (
-    // filterSongs function will be used in the SearchBar
-    // and the filteredSongs array in the SongList so we provide them
     <DecksContext.Provider
-      value={{ deckAState, setDeckAState, deckBState, setDeckBState }}
+      value={{
+        deckAState,
+        setDeckAState,
+        deckBState,
+        setDeckBState,
+        loadDeck,
+      }}
     >
       {children}
     </DecksContext.Provider>

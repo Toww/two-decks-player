@@ -4,11 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlayCircle } from "@fortawesome/free-solid-svg-icons";
 
 const Deck = ({ deckObj }) => {
-  console.log(deckObj);
 
   // Set default song information if there is no loaded song
-  const defaultInfo = { title: "Song title", artist: "Artist" };
+  const defaultInfo = { title: "-", artist: "Please load a song" };
   const songInfo = deckObj.loadedSong ? deckObj.loadedSong : defaultInfo;
+
+  // If deck is playing we add the class marker-active to the marker to
+  // begin its rotation
+  const markerStatus = deckObj.isPlaying ? "marker-active" : "";
 
   return (
     <Col className="">
@@ -45,7 +48,7 @@ const Deck = ({ deckObj }) => {
             <div className="deck-disc">
               <div className="abs-container">
                 <div className="rel-container">
-                  <div className="marker"></div>
+                  <div className={`marker ${markerStatus}`}></div>
                   <div className="deck-disc-center"></div>
                 </div>
               </div>

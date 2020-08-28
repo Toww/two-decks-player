@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useContext } from "react";
+import React, { useRef, useEffect, useContext, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlayCircle, faPauseCircle } from "@fortawesome/free-solid-svg-icons";
@@ -9,6 +9,10 @@ const Deck = ({ deckObj }) => {
 
   // Getting the play / pause function from Context
   const { playPauseDeck } = useContext(DecksContext);
+
+  // Preparing states for song current time and duration
+  const [songCurrentTime, setSongCurrentTime] = useState(0);
+  const [songDuration, setSongDuration] = useState(0);
 
   // Set default song information if there is no loaded song
   const defaultInfo = { title: "-", artist: "Please load a song" };
@@ -24,7 +28,45 @@ const Deck = ({ deckObj }) => {
     marker.current.classList.add("marker-active");
   }, []);
 
-  // Each time isPlaying changes, plays or pauses the audio
+  // Function to convert current time or duration to an
+  // easier to read value
+  const convertToDisplayTime = (baseTime) => {
+    // As baseTime is in seconds:
+    const minutes = Math.floor(baseTime / 60);
+    const seconds = (baseTime % 60).toFixed(0);
+    // if the seconds or minutes ar inferior to 10,
+    // we add a 0 in front of it
+    return `${minutes < 10 ? "0" + minutes : minutes}:${
+      seconds < 10 ? "0" + seconds : seconds
+    }`;
+  };
+
+  // Setting track duration and updating current time.
+  useEffect(() => {
+    const playerCurrent = player.current; // used to keep the player.current value and avoid 'exhaustive-deps" issue.
+
+    const handleCurrentTime = (e) => {
+      setSongCurrentTime(convertToDisplayTime(e.target.currentTime));
+    };
+
+    const handleDuration = (e) => {
+      setSongDuration(convertToDisplayTime(e.target.duration));
+    };
+
+    // Add event listener to update current time on each timeupdate,
+    // and song duration each time song is played / unpaused
+    if (loadedSong) {
+      playerCurrent.addEventListener("timeupdate", handleCurrentTime);
+      playerCurrent.addEventListener("playing", handleDuration);
+    }
+    // Clean event listeners if component unmount
+    return () => {
+      playerCurrent.removeEventListener("timeupdate", handleCurrentTime);
+      playerCurrent.removeEventListener("playing", handleDuration);
+    };
+  });
+
+  // Each time isPlaying changes, plays or pauses the audio.
   useEffect(() => {
     if (isPlaying) {
       player.current.play();
@@ -35,13 +77,14 @@ const Deck = ({ deckObj }) => {
     }
   }, [isPlaying]);
 
+  // Plays or pause as song if loaded in a deck
   const handlePlayPause = () => {
     if (loadedSong) {
       playPauseDeck(deckName);
     }
   };
 
-  // Preparing play / pause button
+  // Preparing play / pause button display
   const playPauseButton = isPlaying ? (
     <FontAwesomeIcon
       icon={faPauseCircle}
@@ -86,7 +129,15 @@ const Deck = ({ deckObj }) => {
                   <h2 className="m-0">{songInfo.artist}</h2>
                 </div>
                 {/* Play / pause */}
-                <div className="m-0">{playPauseButton}</div>
+                <div
+                  className={`m-0 d-flex justify-content-between align-items-center ${layout.flexDirection}`}
+                >
+                  <div>{playPauseButton}</div>
+                  <div>
+                    {/* If song is loaded, display currentTime and duration */}
+                    {loadedSong ? `${songCurrentTime} / ${songDuration}` : ""}
+                  </div>
+                </div>
                 {/* Deck name */}
                 <div className="m-0 align-bottom font-weight-bold">
                   {deckName}

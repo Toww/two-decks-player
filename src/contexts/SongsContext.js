@@ -2,7 +2,6 @@ import React, { useState, createContext } from "react";
 import { v4 as uuidv4 } from "uuid"; // Using uuid to generate a unique id for each song
 import discoDisk from "../mp3/lowdy_disco_disk.mp3";
 import amazonas from "../mp3/smooth-operator-3000_amazonas.mp3";
-import mixFairbanks from "../mp3/mix_fairbanks-mp006.mp3";
 import tempoMangabey from "../mp3/mc_solaar-le_tempo-mangabey-edit.mp3";
 import umusozi from "../mp3/soulchyld_umusozi.mp3";
 
@@ -23,12 +22,6 @@ const SongsContextProvider = ({ children }) => {
       artist: "Mc Solaar",
       title: "Le Tempo (Mangabey edit)",
       src: tempoMangabey,
-    },
-    {
-      id: uuidv4(),
-      artist: "Mix & Fairbanks",
-      title: "M&P006",
-      src: mixFairbanks,
     },
     { id: uuidv4(), artist: "Soulchyld", title: "Umusozi", src: umusozi },
   ];

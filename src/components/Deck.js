@@ -14,16 +14,25 @@ const Deck = ({ deckObj }) => {
   const defaultInfo = { title: "-", artist: "Please load a song" };
   const songInfo = loadedSong ? loadedSong : defaultInfo;
 
-  // If deck is playing we add the class marker-active to the marker to
-  // begin its rotation
-  const markerStatus = isPlaying ? "marker-active" : "";
-
-  // Creating ref for the player
+  // Creating ref for the player and marker
   const player = useRef();
+  const marker = useRef();
+
+  // First time component loads, we add "marker-active" class
+  // to the marker to prevent it to start rotating before React loads.
+  useEffect(() => {
+    marker.current.classList.add("marker-active");
+  }, []);
 
   // Each time isPlaying changes, plays or pauses the audio
   useEffect(() => {
-    isPlaying ? player.current.play() : player.current.pause();
+    if (isPlaying) {
+      player.current.play();
+      marker.current.style.webkitAnimationPlayState = "running";
+    } else {
+      player.current.pause();
+      marker.current.style.webkitAnimationPlayState = "paused";
+    }
   }, [isPlaying]);
 
   const handlePlayPause = () => {
@@ -89,7 +98,7 @@ const Deck = ({ deckObj }) => {
               <div className="deck-disc">
                 <div className="abs-container">
                   <div className="rel-container">
-                    <div className={`marker ${markerStatus}`}></div>
+                    <div ref={marker} className="marker"></div>
                     <div className="deck-disc-center"></div>
                   </div>
                 </div>

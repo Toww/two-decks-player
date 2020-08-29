@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Deck from "./Deck";
+import Deck from "./deck/Deck";
 import { DecksContext } from "../contexts/DecksContext";
 import { Row } from "react-bootstrap";
 
@@ -8,8 +8,8 @@ const Decks = () => {
 
   return (
     <Row>
-      <Deck deckObj={deckAState} />
-      <Deck deckObj={deckBState} />
+      <Deck deckState={deckAState} />
+      <Deck deckState={deckBState} />
     </Row>
   );
 };

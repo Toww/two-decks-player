@@ -17,7 +17,6 @@ $theme-colors: (
 
 $table-dark-bg: $dark-gray-2;
 
-
 $h1-font-size: 1.2rem;
 $h2-font-size: 0.9rem;
 
@@ -43,10 +42,19 @@ input {
 
 // ----- DECKS STYLING -----
 
-.deck {
-  background-color: $light-gray;
+// -- Song progress bar --
+.song-progress-container {
+  padding: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
+.song-progress-bar {
+  height: 5px;
+  background-color: white;
+  width: 0px;
+}
+
+// -- Deck circle and marker --
 // Making a responsive circle by giving it a top & bottom padding
 // of 50%, so that it makes the height equal to the width (100%)
 .deck-disc {

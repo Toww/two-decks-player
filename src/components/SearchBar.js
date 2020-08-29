@@ -6,20 +6,21 @@ import { SongsContext } from "../contexts/SongsContext";
 const SearchBar = () => {
   const { filterSongs } = useContext(SongsContext);
 
-  // This ref will be used to clear search input from the clear icon
+  // Creating ref
   const searchInput = useRef();
 
-  // This state will be used to display search or clear-search icon
+  // State to display search or clear-search icon
   const [searchActive, setSearchActive] = useState(false);
 
+  // Makes search active if searchBar is not empty, puts it back to default if
+  // every character was erased
   const handleSearch = (searchValue) => {
-    // Make search active if searchBar is not empty, put it back to default if
-    // every character was erased
     searchValue ? setSearchActive(true) : setSearchActive(false);
     // filter songs depending on lower-cased input
     filterSongs(searchValue.toLowerCase());
   };
 
+  //Clears search
   const clearSearch = () => {
     // Set search back to default
     handleSearch("");
@@ -28,7 +29,7 @@ const SearchBar = () => {
   };
 
   return (
-    <form className="d-flex justify-content-center align-items-center mt-4 mb-3">
+    <form onSubmit={(e) => e.preventDefault()} className="d-flex justify-content-center align-items-center mt-4 mb-3">
       <label
         htmlFor="song-search"
         className="m-0 p-0 d-flex align-items-center"

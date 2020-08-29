@@ -9,24 +9,25 @@ const Deck = ({ deckState }) => {
 
   return (
     <Col>
-      <div className="deck p-3">
-        {" "}
-        {/* This div is needed to have gutter between the two decks*/}
+      <div className="p-3 bg-light-gray">
         <Row className={layout.flexDirection}>
           {/* Info and Audio Player */}
-          <Col
-            md={8}
-            className={`h-100 d-flex flex-column justify-content-between ${layout.textAlign}`}
-          >
-            <SongInfo textAlign={layout.textAlign} loadedSong={loadedSong} />
-            <AudioPlayer
-              loadedSong={loadedSong}
-              layout={layout}
-              isPlaying={isPlaying}
-              deckName={deckName}
-            />
-            {/* Deck name */}
-            <div className="m-0 align-bottom font-weight-bold">{deckName}</div>
+          <Col md={8}>
+            <div
+              className={`h-100 d-flex flex-column justify-content-between ${layout.textAlign}`}
+            >
+              <SongInfo textAlign={layout.textAlign} loadedSong={loadedSong} />
+              <AudioPlayer
+                loadedSong={loadedSong}
+                layout={layout}
+                isPlaying={isPlaying}
+                deckName={deckName}
+              />
+              {/* Deck name */}
+              <div className="m-0 align-bottom font-weight-bold">
+                {deckName}
+              </div>
+            </div>
           </Col>
           {/* Deck Disc */}
           <Col md={4}>

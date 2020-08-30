@@ -20,6 +20,36 @@ const AudioPlayer = ({ loadedSong, isPlaying, layout, deckName }) => {
     }
   }, [isPlaying, loadedSong]);
 
+  // -- Local storage for song current time and duration --
+
+  // On component first load, check if currentTime is stocked
+  // in local storage and get it if it is
+  useEffect(() => {
+    const localCurrentInfo = JSON.parse(
+      localStorage.getItem(`deck${deckName}CurrentInfo`)
+    );
+    // Check if there is something in local storage before getting info
+    // (to avoid issues on first visit)
+    if (localCurrentInfo) {
+      setSongCurrentTime(localCurrentInfo.songCurrentTime);
+      setSongDuration(localCurrentInfo.songDuration)
+      player.current.currentTime = localCurrentInfo.songCurrentTime;
+    }
+  }, [deckName]);
+
+
+  // If a song is playing, stock the current time in local storage.
+  // To avoid resetting the currentTime in local storage on page refresh,
+  // we check if it is different from 0 saving the info.
+  useEffect(() => {
+    if (isPlaying && songCurrentTime !== 0) {
+      localStorage.setItem(
+        `deck${deckName}CurrentInfo`,
+        JSON.stringify({ songCurrentTime, songDuration, currentSong: loadedSong })
+      );
+    }
+  }, [songCurrentTime, deckName, isPlaying, loadedSong, songDuration]);
+
   return (
     <div>
       {/* If a song is loaded, add source to audio tag */}

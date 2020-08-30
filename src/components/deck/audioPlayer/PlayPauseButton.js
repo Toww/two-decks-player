@@ -7,7 +7,7 @@ const PlayPauseButton = ({ isPlaying, loadedSong, deckName }) => {
   // Getting the play / pause function from DecksContext
   const { playPauseDeck } = useContext(DecksContext);
 
-  // Plays or pauses song  on button click if loaded
+  // Plays or pauses song if loaded
   const handlePlayPause = () => {
     if (loadedSong) {
       playPauseDeck(deckName);
@@ -21,10 +21,11 @@ const PlayPauseButton = ({ isPlaying, loadedSong, deckName }) => {
           icon={faPauseCircle}
           size="lg"
           onClick={handlePlayPause}
-          color={loadedSong ? "currentColor" : "rgba(255,255,255,0.2)"}
+          color="currentColor"
         />
       ) : (
         <FontAwesomeIcon
+          className={loadedSong ? "cursor-pointer" : ""}
           icon={faPlayCircle}
           size="lg"
           onClick={handlePlayPause}

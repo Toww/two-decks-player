@@ -60,8 +60,8 @@ const DecksContextProvider = ({ children }) => {
 
   // -- Local storage --
 
-  // On first load, check if there are informations stocked in local storage,
-  // if there are, set the deck state accordingly.
+  // On first load, check if there are informations stocked in local
+  // storage for each deck, if there are, set the deck state accordingly.
   // /!\ To avoid autoplay warnings and an agressive start of the song,
   // isPlaying is set to false, and user will be free to hit play again
   
@@ -76,6 +76,7 @@ const DecksContextProvider = ({ children }) => {
     }
   }, []);
 
+  // Each time a deck state changes, store it in local storage
   useEffect(() => {
     localStorage.setItem("localDeckAState", JSON.stringify(deckAState));
   }, [deckAState]);

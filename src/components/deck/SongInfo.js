@@ -9,8 +9,8 @@ const SongInfo = ({ loadedSong, textAlign }) => {
     <div
       className={`bg-dark-3 p-2 d-flex flex-column justify-content-center ${textAlign}`}
     >
-      <h1 className="m-0 font-weight-bold">{songInfo.title}</h1>
-      <h2 className="m-0">{songInfo.artist}</h2>
+      <h1 className="m-0 font-weight-bold text-ellipsis">{songInfo.title}</h1>
+      <h2 className="m-0 text-ellipsis">{songInfo.artist}</h2>
     </div>
   );
 };

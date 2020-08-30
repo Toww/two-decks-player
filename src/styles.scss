@@ -40,6 +40,16 @@ input {
   color: white;
 }
 
+.cursor-pointer:hover {
+  cursor:pointer;
+}
+
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 // ----- DECKS STYLING -----
 
 // -- Song progress bar --
@@ -96,7 +106,7 @@ input {
   width: 50%;
   // Height should be in pixels to avoid problems
   // on inner circle centering with some viewport sizes
-  // making it and odd px value (half pixel centering is impossible).
+  // making it and odd px value.
   height: 6px;
   top: 50%;
   left: 0;

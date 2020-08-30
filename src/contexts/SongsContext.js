@@ -28,7 +28,7 @@ const SongsContextProvider = ({ children }) => {
   // We prepare a state for filtered songs
   const [filteredSongs, setFilteredSongs] = useState(baseSongs);
 
-  // Update the filteredSongs state depending on search value
+  // Updates the filteredSongs state depending on search value
   const filterSongs = (searchValue) => {
     setFilteredSongs(
       baseSongs.filter((song) => {

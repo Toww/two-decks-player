@@ -39,7 +39,7 @@ const ContextMenu = ({ songClickPosState, setsongClickPosState }) => {
   };
 
   // On songClickPosState change, context menu appears next to mouse cursor
-  // if not visible and hasJustBeenClosed is false.
+  // if menu is not visible and hasJustBeenClosed is false.
   // Else it turns hasJustBeenClosed to false so that next click on
   // a song will open the menu.
   useEffect(() => {
@@ -79,7 +79,7 @@ const ContextMenu = ({ songClickPosState, setsongClickPosState }) => {
   }, [songClickPosState, contextMenuState, setsongClickPosState]);
 
   // On each render, adds an event listener to close menu on click outside
-  // of it if the menu is visible
+  // of it when menu is visible
   useEffect(() => {
     // Checks if user clicks outside of context menu,
     // close it if he does

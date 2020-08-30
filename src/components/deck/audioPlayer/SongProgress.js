@@ -78,7 +78,11 @@ const SongProgress = ({
   return (
     <div
       ref={songProgressContainer}
-      className="d-block w-100 mb-2 song-progress-container"
+      className={
+        loadedSong
+          ? "d-block w-100 mb-2 song-progress-container cursor-pointer"
+          : "d-block w-100 mb-2 song-progress-container"
+      }
     >
       <div ref={songProgressBar} className="d-block song-progress-bar"></div>
     </div>

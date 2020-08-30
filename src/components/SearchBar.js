@@ -9,7 +9,7 @@ const SearchBar = () => {
   // Creating ref
   const searchInput = useRef();
 
-  // State to display search or clear-search icon
+  // State to know if search is active
   const [searchActive, setSearchActive] = useState(false);
 
   // Makes search active if searchBar is not empty, puts it back to default if
@@ -40,7 +40,7 @@ const SearchBar = () => {
             <FontAwesomeIcon
               icon={faTimesCircle}
               alt="Clear search icon"
-              className="mr-2"
+              className="mr-2 cursor-pointer"
               onClick={clearSearch}
             />
           ) : (

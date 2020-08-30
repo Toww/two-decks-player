@@ -17,7 +17,7 @@ const Song = ({ title, artist, handleSongClick, handleSongDrag }) => {
       ref={dragRef}
       onClick={handleSongClick}
       onDragStart={handleSongDrag}
-      className="user-select-none"
+      className="cursor-pointer user-select-none"
       style={{
         backgroundColor: isDragging ? "rgba(255,255,255,0.2" : "",
       }}

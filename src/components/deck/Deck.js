@@ -9,8 +9,8 @@ const Deck = ({ deckState }) => {
   const { loadedSong, isPlaying, layout, deckName } = deckState;
 
   return (
-    <Col>
-      <div className="p-3 bg-light-gray">
+    <Col xs={6}>
+      <div className="p-0 p-md-3 bg-light-gray">
         <Row className={layout.flexDirection}>
           {/* Info and Audio Player */}
           <Col md={8}>
@@ -25,13 +25,13 @@ const Deck = ({ deckState }) => {
                 deckName={deckName}
               />
               {/* Deck name */}
-              <div className="m-0 align-bottom font-weight-bold">
+              <div className="d-none d-lg-block m-0 align-bottom font-weight-bold">
                 {deckName}
               </div>
             </div>
           </Col>
           {/* Deck Disc */}
-          <Col md={4}>
+          <Col md={4} className="mx-2 mb-3 m-md-0">
             <DeckDisc isPlaying={isPlaying} loadedSong={loadedSong} />
           </Col>
         </Row>

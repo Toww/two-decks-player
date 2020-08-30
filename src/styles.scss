@@ -119,6 +119,38 @@ input {
   background: $dark;
 }
 
+
+// -- Drag and Drop overlay --
+
+.col-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+}
+
+.overlay-content {
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+}
+
+.drop-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  width: 4.25rem;
+  height: 4.25rem;
+}
+
 // ----- ANIMATIONS -----
 
 @keyframes marker-rotation {

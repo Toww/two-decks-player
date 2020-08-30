@@ -40,6 +40,16 @@ input {
   color: white;
 }
 
+.cursor-pointer:hover {
+  cursor:pointer;
+}
+
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 // ----- DECKS STYLING -----
 
 // -- Song progress bar --

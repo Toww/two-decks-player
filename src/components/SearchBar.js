@@ -40,7 +40,7 @@ const SearchBar = () => {
             <FontAwesomeIcon
               icon={faTimesCircle}
               alt="Clear search icon"
-              className="mr-2"
+              className="mr-2 cursor-pointer"
               onClick={clearSearch}
             />
           ) : (

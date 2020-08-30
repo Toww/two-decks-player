@@ -10,7 +10,7 @@ const SongList = () => {
   const { filteredSongs, getSongById } = useContext(SongsContext);
   const { setSongToLoad } = useContext(DecksContext);
 
-  // State to tell contextMenu where click on the song was made
+  // State to keep click position when a song is clicked
   const [songClickPosState, setsongClickPosState] = useState(null);
 
   const handleSongClick = (e, songId) => {

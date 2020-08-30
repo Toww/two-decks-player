@@ -7,7 +7,7 @@ const PlayPauseButton = ({ isPlaying, loadedSong, deckName }) => {
   // Getting the play / pause function from DecksContext
   const { playPauseDeck } = useContext(DecksContext);
 
-  // Plays or pauses song  on button click if loaded
+  // Plays or pauses song if loaded
   const handlePlayPause = () => {
     if (loadedSong) {
       playPauseDeck(deckName);

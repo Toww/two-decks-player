@@ -20,7 +20,7 @@ const AudioPlayer = ({ loadedSong, isPlaying, layout, deckName }) => {
     }
   }, [isPlaying, loadedSong]);
 
-  // -- Local storage for song current time and duration --
+  // -- Local storage - song current time and duration --
 
   // On component first load, check if currentTime is stocked
   // in local storage and get it if it is
@@ -39,7 +39,7 @@ const AudioPlayer = ({ loadedSong, isPlaying, layout, deckName }) => {
 
   // If a song is playing, stock the current time in local storage.
   // To avoid resetting the currentTime in local storage on page refresh,
-  // we check if it is different from 0 saving the info.
+  // we check if it is different from 0 before saving the info.
   useEffect(() => {
     if (isPlaying && songCurrentTime !== 0) {
       localStorage.setItem(

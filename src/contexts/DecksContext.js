@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 
 export const DecksContext = createContext();
 
@@ -57,6 +57,32 @@ const DecksContextProvider = ({ children }) => {
       }
     }
   };
+
+  // -- Local storage --
+
+  // On first load, check if there are informations stocked in local storage,
+  // if there are, set the deck state accordingly.
+  // /!\ To avoid autoplay warnings and an agressive start of the song,
+  // isPlaying is set to false, and user will be free to hit play again
+  
+  useEffect(() => {
+    const localDeckA = JSON.parse(localStorage.getItem("localDeckAState"));
+    const localDeckB = JSON.parse(localStorage.getItem("localDeckBState"));
+    if (localDeckA) {
+      setDeckAState({ ...localDeckA, isPlaying: false });
+    }
+    if (localDeckB) {
+      setDeckBState({ ...localDeckB, isPlaying: false });
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("localDeckAState", JSON.stringify(deckAState));
+  }, [deckAState]);
+
+  useEffect(() => {
+    localStorage.setItem("localDeckBState", JSON.stringify(deckBState));
+  }, [deckBState]);
 
   return (
     <DecksContext.Provider

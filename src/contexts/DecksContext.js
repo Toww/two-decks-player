@@ -24,8 +24,11 @@ const DecksContextProvider = ({ children }) => {
     },
   });
 
+  // State to prepare the song that will be loaded in a deck
+  const [songToLoad, setSongToLoad] = useState(null);
+
   // Loads a song in a specific deck, play the track and stop the other deck
-  const loadDeck = (deckNameArg, songToLoad) => {
+  const loadDeck = (deckNameArg) => {
     if (deckNameArg === "A") {
       setDeckAState({ ...deckAState, loadedSong: songToLoad, isPlaying: true });
       setDeckBState({ ...deckBState, isPlaying: false });
@@ -64,6 +67,7 @@ const DecksContextProvider = ({ children }) => {
         setDeckBState,
         loadDeck,
         playPauseDeck,
+        setSongToLoad,
       }}
     >
       {children}

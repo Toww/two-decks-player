@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Row, Col } from "react-bootstrap";
 import DeckDisc from "./DeckDisc";
 import SongInfo from "./SongInfo";
 import AudioPlayer from "./audioPlayer/AudioPlayer";
+import DropZone from "./DropZone";
 
 const Deck = ({ deckState }) => {
   const { loadedSong, isPlaying, layout, deckName } = deckState;
@@ -34,6 +35,8 @@ const Deck = ({ deckState }) => {
             <DeckDisc isPlaying={isPlaying} loadedSong={loadedSong} />
           </Col>
         </Row>
+        {/* Drop Zone for drag and drop */}
+        <DropZone deckName={deckName} />
       </div>
     </Col>
   );

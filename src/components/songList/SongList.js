@@ -1,17 +1,16 @@
 import React, { useContext, useState } from "react";
 import { Table } from "react-bootstrap";
 import { SongsContext } from "../../contexts/SongsContext";
+import { DecksContext } from "../../contexts/DecksContext";
 import Song from "./Song";
 import ContextMenu from "./ContextMenu";
 
 const SongList = () => {
   // Get states and functions for songs and decks using Context.
   const { filteredSongs, getSongById } = useContext(SongsContext);
+  const { setSongToLoad } = useContext(DecksContext);
 
-  // State to prepare the song that will be loaded in a deck
-  const [songToLoad, setSongToLoad] = useState(null);
-
-  // State to handle click on a song
+  // State to tell contextMenu where click on the song was made
   const [songClickPosState, setsongClickPosState] = useState(null);
 
   const handleSongClick = (e, songId) => {
@@ -22,16 +21,20 @@ const SongList = () => {
     setSongToLoad(getSongById(songId));
   };
 
+  const handleSongDrag = (songId) => {
+    // Preparing the song that will be loaded if click on the Deck A or B.
+    setSongToLoad(getSongById(songId));
+  };
+
   return (
     <>
       <ContextMenu
-        songToLoad={songToLoad}
         songClickPosState={songClickPosState}
         setsongClickPosState={setsongClickPosState}
       />
 
       {/* SongList Table */}
-      <Table striped hover variant="dark">
+      <Table hover variant="dark">
         <thead>
           <tr className="bg-dark-3">
             <th>Song</th>
@@ -45,6 +48,7 @@ const SongList = () => {
               artist={song.artist}
               key={song.id}
               handleSongClick={(e) => handleSongClick(e, song.id)}
+              handleSongDrag={() => handleSongDrag(song.id)}
             />
           ))}
         </tbody>

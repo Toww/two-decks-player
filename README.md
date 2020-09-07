@@ -1,7 +1,8 @@
 # Two Decks Player
 
-A music player using two decks, the project was made using [React](https://reactjs.org/ "React"), [Bootstrap](https://getbootstrap.com/ "Bootstrap"), and [React DnD](https://react-dnd.github.io/react-dnd/about "React DnD").
-Songs can be loaded to the decks via context menu (on click), drag and drop, and the current state of the songs is kept on refresh / reload via local storage.
+A music player using two decks, the project was made using [React](https://reactjs.org/ "React"), [Bootstrap](https://getbootstrap.com/ "Bootstrap"), and [React DnD](https://react-dnd.github.io/react-dnd/about "React DnD").  
+Songs can be loaded to the decks via context menu (on click) or drag and drop.  
+The current state of the songs is kept on refresh / reload via local storage.
 
 ## Online version
 

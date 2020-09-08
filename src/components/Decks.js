@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import Deck from "./deck/Deck";
-import { DecksContext } from "../contexts/DecksContext";
+import Deck from "components/deck/Deck";
+import { DecksContext } from "contexts/DecksContext";
 import { Row } from "react-bootstrap";
 
 const Decks = () => {

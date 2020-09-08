@@ -1,6 +1,6 @@
 import React, { useRef, useContext, useEffect, useState } from "react";
 import { ListGroup } from "react-bootstrap";
-import { DecksContext } from "../../contexts/DecksContext";
+import { DecksContext } from "contexts/DecksContext";
 
 const ContextMenu = ({ songClickPosState, setsongClickPosState }) => {
   // Creating ref

@@ -1,7 +1,7 @@
 import React, { useState, useContext, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-import { SongsContext } from "../contexts/SongsContext";
+import { SongsContext } from "contexts/SongsContext";
 
 const SearchBar = () => {
   const { filterSongs } = useContext(SongsContext);

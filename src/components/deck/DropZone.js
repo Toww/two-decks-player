@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Row, Col } from "react-bootstrap";
-import { DecksContext } from "../../contexts/DecksContext";
+import { DecksContext } from "contexts/DecksContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHandRock } from "@fortawesome/free-regular-svg-icons";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";

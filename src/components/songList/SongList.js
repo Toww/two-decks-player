@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Table } from "react-bootstrap";
-import { SongsContext } from "../../contexts/SongsContext";
-import { DecksContext } from "../../contexts/DecksContext";
-import SongItem from "./SongItem";
-import ContextMenu from "./ContextMenu";
+import { SongsContext } from "contexts/SongsContext";
+import { DecksContext } from "contexts/DecksContext";
+import SongItem from "components/songList/SongItem";
+import ContextMenu from "components/songList//ContextMenu";
 
 const SongList = () => {
   // Get states and functions for songs and decks using Context.

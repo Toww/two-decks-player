@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlayCircle, faPauseCircle } from "@fortawesome/free-solid-svg-icons";
-import { DecksContext } from "../../../contexts/DecksContext";
+import { DecksContext } from "contexts/DecksContext";
 
 const PlayPauseButton = ({ isPlaying, loadedSong, deckName }) => {
   // Getting the play / pause function from DecksContext

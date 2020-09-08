@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Row, Col } from "react-bootstrap";
-import { DecksContext } from "../../contexts/DecksContext";
+import { DecksContext } from "contexts/DecksContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHandRock } from "@fortawesome/free-regular-svg-icons";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
@@ -31,20 +31,14 @@ const DropZone = ({ deckName }) => {
     <Row ref={dropRef} style={{ display: canDrop ? "block" : "none" }}>
       <Col className="col-overlay">
         <div
-          className="overlay-content"
-          style={{
-            border: isOver
-              ? "3px solid #FFFFFF"
-              : "2px dashed rgba(255,255,255,0.8)",
-          }}
+          className={`overlay-content ${
+            isOver ? "border-active" : "border-base"
+          }`}
         >
           <div
-            className="drop-icon-container"
-            style={{
-              border: isOver
-                ? "1px dashed rgba(255,255,255,1)"
-                : "1px dashed rgba(255,255,255,0.6)",
-            }}
+            className={`drop-icon-container ${
+              isOver ? "border-active" : "border-base"
+            }`}
           >
             {isOver ? (
               <FontAwesomeIcon icon={faPlay} size="2x" />

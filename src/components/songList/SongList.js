@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Table } from "react-bootstrap";
-import { SongsContext } from "../../contexts/SongsContext";
-import { DecksContext } from "../../contexts/DecksContext";
-import Song from "./Song";
-import ContextMenu from "./ContextMenu";
+import { SongsContext } from "contexts/SongsContext";
+import { DecksContext } from "contexts/DecksContext";
+import SongItem from "components/songList/SongItem";
+import ContextMenu from "components/songList//ContextMenu";
 
 const SongList = () => {
   // Get states and functions for songs and decks using Context.
@@ -43,7 +43,7 @@ const SongList = () => {
         </thead>
         <tbody>
           {filteredSongs.map((song) => (
-            <Song
+            <SongItem
               title={song.title}
               artist={song.artist}
               key={song.id}

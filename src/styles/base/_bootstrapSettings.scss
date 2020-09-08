@@ -1,0 +1,20 @@
+// =====Custom Bootstrap settings =====
+
+$theme-colors: (
+  "black": #000000,
+  "white": #ffffff,
+  "light-gray": $light-gray,
+  "dark": $dark-gray-1,
+  "dark-2": $dark-gray-2,
+  "dark-3": $dark-gray-3,
+  "light-alpha": $light-alpha-1,
+);
+
+$table-dark-bg: $dark-gray-2;
+
+$h1-font-size: 1.2rem;
+$h2-font-size: 0.9rem;
+
+// ===== Importing Bootstrap default files =====
+
+@import "../../node_modules/bootstrap/scss/bootstrap";

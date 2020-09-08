@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles.scss";
+import "./styles/main.scss";
 import Layout from "./components/Layout";
 import Decks from "./components/Decks";
 import SongList from "./components/songList/SongList";

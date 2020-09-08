@@ -1,0 +1,27 @@
+//  ----- GLOBAL STYLING -----
+
+body {
+  color: $white;
+  background-color: $dark-gray-1;
+}
+
+input {
+  border: none;
+  border-bottom: 0.0625rem solid $white;
+  background-color: transparent;
+  color: $white;
+}
+
+.cursor-pointer:hover {
+  cursor: pointer;
+}
+
+.cursor-grab:hover {
+  cursor: grab;
+}
+
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

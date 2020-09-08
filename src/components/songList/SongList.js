@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Table } from "react-bootstrap";
 import { SongsContext } from "../../contexts/SongsContext";
 import { DecksContext } from "../../contexts/DecksContext";
-import Song from "./Song";
+import SongItem from "./SongItem";
 import ContextMenu from "./ContextMenu";
 
 const SongList = () => {
@@ -43,7 +43,7 @@ const SongList = () => {
         </thead>
         <tbody>
           {filteredSongs.map((song) => (
-            <Song
+            <SongItem
               title={song.title}
               artist={song.artist}
               key={song.id}

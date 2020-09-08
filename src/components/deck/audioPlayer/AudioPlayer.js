@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import PlayPauseButton from "./PlayPauseButton";
-import TimeDisplay from "./TimeDisplay";
-import SongProgress from "./SongProgress";
+import PlayPauseButton from "components/deck/audioPlayer/PlayPauseButton";
+import TimeDisplay from "components/deck/audioPlayer/TimeDisplay";
+import SongProgress from "components/deck/audioPlayer/SongProgress";
 
 const AudioPlayer = ({ loadedSong, isPlaying, layout, deckName }) => {
   // Creating refs

@@ -1,0 +1,10 @@
+// ----- ANIMATIONS -----
+
+@keyframes marker-rotation {
+  from {
+    transform: rotate(90deg);
+  }
+  to {
+    transform: rotate(450deg);
+  }
+}

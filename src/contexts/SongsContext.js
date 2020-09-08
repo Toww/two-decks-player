@@ -1,8 +1,8 @@
 import React, { useState, createContext } from "react";
-import discoDisk from "../mp3/lowdy_disco_disk.mp3";
-import amazonas from "../mp3/smooth-operator-3000_amazonas.mp3";
-import tempoMangabey from "../mp3/mc_solaar-le_tempo-mangabey-edit.mp3";
-import umusozi from "../mp3/soulchyld_umusozi.mp3";
+import discoDisk from "assets/mp3/lowdy_disco_disk.mp3";
+import amazonas from "assets/mp3/smooth-operator-3000_amazonas.mp3";
+import tempoMangabey from "assets/mp3/mc_solaar-le_tempo-mangabey-edit.mp3";
+import umusozi from "assets/mp3/soulchyld_umusozi.mp3";
 
 export const SongsContext = createContext();
 

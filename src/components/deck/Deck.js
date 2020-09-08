@@ -1,9 +1,9 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import DeckDisc from "./DeckDisc";
-import SongInfo from "./SongInfo";
-import AudioPlayer from "./audioPlayer/AudioPlayer";
-import DropZone from "./DropZone";
+import DeckDisc from "components/deck/DeckDisc";
+import SongInfo from "components/deck/SongInfo";
+import AudioPlayer from "components/deck/audioPlayer/AudioPlayer";
+import DropZone from "components/deck/DropZone";
 
 const Deck = ({ deckState }) => {
   const { loadedSong, isPlaying, layout, deckName } = deckState;

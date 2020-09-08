@@ -1,0 +1,96 @@
+// ----- DECKS STYLING -----
+
+// -- Song progress bar --
+.song-progress-container {
+  padding: 0.0625rem;
+  background-color: $light-alpha-1;
+}
+
+.song-progress-bar {
+  height: 0.35rem;
+  background-color: $white;
+  width: 0px;
+}
+
+//-- Drag and drop dropzone styling --
+
+.overlay-content.border-base {
+  border: 2px dashed $light-alpha-3;
+}
+
+.overlay-content.border-active {
+  border: 3px solid $white;
+}
+
+.drop-icon-container.border-base {
+  border: 1px dashed $light-alpha-2;
+}
+
+.drop-icon-container.border-active {
+  border: 1px dashed $white;
+}
+
+// -- Deck circle and marker --
+// Making a responsive circle by giving it a top & bottom padding
+// of 50%, so that it makes the height equal to the width (100%)
+.deck-disc {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 0;
+  padding: 50% 0;
+  border-radius: 50%;
+  color: $dark;
+  background: $white;
+}
+
+// We need a container for the marker as we can't use deck-disc's padding.
+// For better positioning, we need the marker to be absolute, and therefore have
+// its container positioned as relative. For this reason, we create an absolute container,
+// and another relative container in it.
+.deck-disc > .abs-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 10%;
+}
+
+.abs-container > .rel-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-3px); // To center the marker and circle
+}
+
+// For the following elements, some values must be in px to avoid returning
+// rem that corresponds to px odd values. This could be problematic for centering
+// the marker and the deck-disc-center.
+.rel-container > .marker {
+  position: absolute;
+  width: 50%;
+  height: 6px;
+  top: 50%;
+  left: 0;
+  z-index: 20;
+  transform-origin: 100%; // To rotate the marker from the end and not the center
+  transform: rotate(90deg); // To start with a vertical marker (12 o clock)
+  background: $dark;
+}
+
+.marker-active {
+  animation: marker-rotation 3s linear infinite;
+}
+
+.rel-container > .deck-disc-center {
+  z-index: 20;
+  margin-top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: $dark;
+}

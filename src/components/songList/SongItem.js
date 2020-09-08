@@ -17,13 +17,12 @@ const Song = ({ title, artist, handleSongClick, handleSongDrag }) => {
       ref={dragRef}
       onClick={handleSongClick}
       onDragStart={handleSongDrag}
-      className="cursor-pointer user-select-none"
-      style={{
-        backgroundColor: isDragging ? "rgba(255,255,255,0.2" : "",
-      }}
+      className={`cursor-grab user-select-none ${
+        isDragging ? "bg-light-alpha" : ""
+      }`}
     >
-      <td width="50%">{title}</td>
-      <td width="50%">{artist}</td>
+      <td className="w-50">{title}</td>
+      <td className="w-50">{artist}</td>
     </tr>
   );
 };
